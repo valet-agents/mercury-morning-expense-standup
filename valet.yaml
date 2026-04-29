@@ -1,0 +1,65 @@
+name: morning-expense-standup
+display_name: Morning Expense Standup
+description: >-
+  Every weekday at 8am Pacific, reads your Mercury accounts and posts a
+  clean cash-on-hand briefing to #finance. Read-only — never moves money.
+category: finance
+
+story:
+  hero: "Morning Expense Standup checks Mercury before you do."
+  subheadline: >-
+    Every weekday at 8am Pacific, reads your Mercury accounts and posts a
+    clean cash-on-hand briefing to #finance. Read-only — never moves money.
+  steps:
+    - role: trigger
+      title: "8am Pacific hits, weekday."
+      body: >-
+        Cron fires Monday through Friday at 8am Pacific. No buttons,
+        no logins, no remembering to check.
+    - role: action
+      title: "Morning Expense Standup reads Mercury."
+      body: >-
+        Pulls checking, savings, treasury, credit, the last 7 days of
+        transactions, and open invoices — in one pass.
+      catalog: mercury
+    - role: outcome
+      title: "Five bullets in #finance, before you log in."
+      body: >-
+        Cash on hand, credit drawn, top outflows and inflows, open
+        invoices. No alerts, no @-mentions.
+      catalog: slack
+
+connectors:
+  - catalog: mercury
+    description: >-
+      Mercury CLI for reading account balances, recent transactions,
+      and open invoices.
+    ui:
+      headline: "Connect Mercury so the agent can read it."
+      blurb: >-
+        The agent reads balances, transactions, and invoices through
+        your Mercury API token. It never moves money — that's a
+        SOUL-level rule.
+      done_note: "Reading your Mercury accounts"
+    slot_descriptions:
+      MERCURY_API_KEY: Mercury API token (read-only)
+
+channels:
+  - type: cron
+    name: morning-standup
+    cron: "0 15 * * 1-5"
+    description: >-
+      Fires the daily briefing every weekday at 8am Pacific
+      (15:00 UTC during PDT).
+  - catalog: slack
+    name: morning-expense-standup
+    description: >-
+      Per-agent Slack bot. Invite it to #finance and it posts the
+      morning briefing there.
+    ui:
+      headline: "Pick the channel for the morning post."
+      blurb: >-
+        We'll add the bot to your workspace. Invite it to #finance
+        (or wherever your team talks money) and it posts every
+        weekday at 8am.
+      done_note: "Posting in your finance channel each morning"
