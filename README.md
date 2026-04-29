@@ -1,6 +1,6 @@
 # Morning Expense Standup
 
-A daily [Mercury](https://mercury.com) finance standup posted to Slack every weekday at 8am Pacific. Pulls account balances (checking, savings, treasury, credit), the last 7 days of transactions, and open invoices, then writes a concise update with cash on hand, notable outflows, and notable inflows. Read-only — never moves money.
+Every weekday at 8am Pacific, reads your [Mercury](https://mercury.com) accounts and posts a clean cash-on-hand briefing to #finance. Read-only — never moves money.
 
 ## Prerequisites
 - A [Mercury](https://mercury.com) account with a read-only API token (generate at https://app.mercury.com/settings/tokens)
