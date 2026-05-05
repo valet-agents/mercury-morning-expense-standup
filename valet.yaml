@@ -5,6 +5,9 @@ description: >-
   clean cash-on-hand briefing to #finance. Read-only — never moves money.
 category: finance
 
+example:
+  prompt: "What did we spend yesterday?"
+
 story:
   hero: "Morning Expense Standup checks Mercury before you do."
   subheadline: >-
