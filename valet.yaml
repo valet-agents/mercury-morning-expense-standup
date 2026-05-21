@@ -49,13 +49,11 @@ connectors:
 
 channels:
   - type: cron
-    name: morning-standup
     cron: "0 15 * * 1-5"
     description: >-
       Fires the daily briefing every weekday at 8am Pacific
       (15:00 UTC during PDT).
   - catalog: slack
-    name: morning-expense-standup
     description: >-
       Per-agent Slack bot. Invite it to #finance and it posts the
       morning briefing there.
